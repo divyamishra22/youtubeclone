@@ -1,4 +1,4 @@
-type initialState = {
+export type InitialState = {
     videos: HomePageVideos[];
     currentPlaying: CurrentPlaying | null;
     searchTerm: string;
@@ -7,7 +7,7 @@ type initialState = {
     recommendedVideos: RecommendedVideos[];
 }
 
-type HomePageVideos = {
+export type HomePageVideos = {
     videoId: string;
     videoTitle: string;
     videoDescription: string;
