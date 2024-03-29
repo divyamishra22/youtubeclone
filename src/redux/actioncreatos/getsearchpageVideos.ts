@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL } from '../../constants';
+import { BASE_URL } from '../../constants.ts';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 
