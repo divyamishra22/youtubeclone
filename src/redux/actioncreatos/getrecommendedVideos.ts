@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BASE_URL } from '../../constants';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 
 const options = {
@@ -12,8 +13,10 @@ const options = {
   },
 };
 
-export const fetchhomepageVideosFromAPI = async (id) => {
+export const getrecommendedVideos = createAsyncThunk(
+  "getrecommendedVideo",
+  async (id) => {
   const { data } = await axios.get(`${BASE_URL}/channels?part=snippet&id=${id}`, options);
 
   return data;
-};
+})

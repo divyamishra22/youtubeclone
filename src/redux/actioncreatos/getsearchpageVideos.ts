@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BASE_URL } from '../../constants';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 
 const options = {
@@ -12,8 +13,10 @@ const options = {
   },
 };
 
-export const fetchVideosFromAPI = async (searchTerm) => {
+export const getsearchVideos = createAsyncThunk(
+  "getsearchVideos",
+  async (searchTerm) => {
   const { data } = await axios.get(`${BASE_URL}/search?part=snippet&q=${searchTerm}`, options);
 
   return data;
-};
+});
