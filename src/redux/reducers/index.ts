@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 import {InitialState} from "../types";
 import { gethomepageVideos } from "../actioncreatos/gethomepageVideos";
 import { getrecommendedVideos } from "../actioncreatos/getrecommendedVideos";
@@ -21,7 +21,7 @@ const youtube = createSlice({
     reducers:{
         searchTerm: (state, action) =>      //here, usedispatch will trigger actions, which is created by default, and in turn trigger reducer,action by default reducer will take
         {
-            state.searchTerm = action.payload;
+            state.searchTerm = action.payload; // like we decalre actions using switch case inside reducer, it the same thing
         },
         clearsearchTerm: (state) =>
         {
@@ -52,3 +52,14 @@ const youtube = createSlice({
     },
 
 })
+
+export const{ clearVideos, clearsearchTerm,searchTerm } = youtube.actions;
+
+export const store = configureStore({
+    reducer:{
+   youapp: youtube.reducer
+    }
+})
+
+export type rootstate = ReturnType<typeof store.getState>;
+export type rootdispatch = ReturnType<typeof store.dispatch>;
