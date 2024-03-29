@@ -1,9 +1,9 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import {InitialState} from "../types";
-import { gethomepageVideos } from "../actioncreatos/gethomepageVideos";
-import { getrecommendedVideos } from "../actioncreatos/getrecommendedVideos";
-import { getsearchVideos } from "../actioncreatos/getsearchpageVideos";
-import { getVideo } from "../actioncreatos/getvideoDetail";
+import { gethomepageVideos } from "../actioncreatos/gethomepageVideos.ts";
+import { getrecommendedVideos } from "../actioncreatos/getrecommendedVideos.ts";
+import { getsearchVideos } from "../actioncreatos/getsearchpageVideos.ts";
+import { getVideo } from "../actioncreatos/getvideoDetail.ts";
 
 const initialState: InitialState = {
     videos: [],
@@ -19,7 +19,7 @@ const youtube = createSlice({
     name: "youtubeapp",
     initialState,
     reducers:{
-        searchTerm: (state, action) =>      //here, usedispatch will trigger actions, which is created by default, and in turn trigger reducer,action by default reducer will take
+        searchTerms: (state, action) =>      //here, usedispatch will trigger actions, which is created by default, and in turn trigger reducer,action by default reducer will take
         {
             state.searchTerm = action.payload; // like we decalre actions using switch case inside reducer, it the same thing
         },
@@ -53,7 +53,7 @@ const youtube = createSlice({
 
 })
 
-export const{ clearVideos, clearsearchTerm,searchTerm } = youtube.actions;
+export const{ clearVideos, clearsearchTerm,searchTerms } = youtube.actions;
 
 export const store = configureStore({
     reducer:{
@@ -62,4 +62,4 @@ export const store = configureStore({
 })
 
 export type rootstate = ReturnType<typeof store.getState>;
-export type rootdispatch = ReturnType<typeof store.dispatch>;
+export type rootdispatch = typeof store.dispatch;
