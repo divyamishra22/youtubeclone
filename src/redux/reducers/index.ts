@@ -46,7 +46,7 @@ const youtube = createSlice({
       state.nextPageToken = action.payload;   
         })
         builder.addCase(getVideo.fulfilled, (state, action) =>{
-            state.searchResults = action.payload;
+            state.currentPlaying = action.payload;
       state.nextPageToken = action.payload;   
         })
     },
