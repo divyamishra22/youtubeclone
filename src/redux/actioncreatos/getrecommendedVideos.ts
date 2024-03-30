@@ -15,7 +15,7 @@ const options = {
 
 export const getrecommendedVideos = createAsyncThunk(
   "getrecommendedVideo",
-  async (id) => {
+  async (id:string) => {
   const { data } = await axios.get(`${BASE_URL}/channels?part=snippet&id=${id}`, options);
 
   return data;

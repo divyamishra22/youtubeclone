@@ -15,7 +15,7 @@ const options = {
 
 export const getVideo = createAsyncThunk(
   "getVideo",
-  async (id) => {
+  async (id:string) => {
   const { data } = await axios.get(`${BASE_URL}/videos?part=snippet,statistics&id=${id}`, options);
 
   return data;
