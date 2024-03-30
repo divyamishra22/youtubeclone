@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { BASE_URL } from '../../constants.ts';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { rootstate, store } from '../reducers/index.ts';
 
 
 const options = {
@@ -15,7 +16,9 @@ const options = {
 
 export const gethomepageVideos = createAsyncThunk(
    "gethomepageVideos",
- async (selectedCategory) => {
+ async () => {
+  const {youapp:{videos}} = store.getState() as rootstate;
+  const selectedCategory = videos;
   const { data } = await axios.get(`${BASE_URL}/search?part=snippet&q=${selectedCategory}`, options);
 
   return data;
